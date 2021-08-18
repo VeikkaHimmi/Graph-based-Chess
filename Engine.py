@@ -42,9 +42,6 @@ class Engine:
     def updatePositions(self):
         self.flipGamestate()
 
-        if self.check():
-
-
         for position in self.chesspieces:
             for piece in self.chesspieces[position]:#multiple pieces ie. W-pawn
                 if 'Eaten' in piece.getLabel():
@@ -62,6 +59,7 @@ class Engine:
 
     def check(self):
         return;
+
 def createPieces(self,label):
 
     if "pawn" in label:

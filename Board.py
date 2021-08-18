@@ -25,7 +25,9 @@ class Board():
     def screen(self):
         self.getImages(self.boardpieces)
         p.init()
+        p.display.set_caption('Graph-based-Chess')
         screen = p.display.set_mode((SIZE,SIZE))
+
         screen.fill(p.Color("white"))
 
         running = True

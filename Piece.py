@@ -26,8 +26,8 @@ class Piece():
         if "pawn" in label:
             self.position = position + 10*self.factor + index;
         
-            self.allowedY = [[1*self.factor],[1*self.factor],[1*self.factor], [2*self.factor]];
-            self.allowedX = [[0],[1],[-1], [0]];
+            self.allowedY = [[1*self.factor,2*self.factor],[1*self.factor],[1*self.factor]];
+            self.allowedX = [[0,0],[1],[-1]];
 
         elif "knight" in label:
             self.position = position + index*5 + 1;

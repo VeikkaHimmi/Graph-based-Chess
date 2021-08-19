@@ -9,7 +9,7 @@ class Engine:
     def __init__(self):
         self.graph = nx.DiGraph();
         self.chesspieces = {};
-        self.gameState = "W";
+        self.gameState = "W-";
 
         board = [0,1,2,3,4,5,6,7,
             10,11,12,13,14,15,16,17,
@@ -40,19 +40,26 @@ class Engine:
         return self.graph;
     
     def updatePositions(self):
-        self.flipGamestate()
-
+        
         for position in self.chesspieces:
             for piece in self.chesspieces[position]:#multiple pieces ie. W-pawn
                 if 'Eaten' in piece.getLabel():
                     continue;
+
+                if self.chesspieces[piece.getCountry()+'king'][0].checked_2 == True:
+                    allowed_positions = self.chesspieces[piece.getCountry()+'king'][0].checkmoves;
+                    piece.setCheckmoves(allowed_positions);
+                    piece.checked_2 = True;
+  
                 piece.setPaths();
 
+        self.flipGamestate()
+
     def flipGamestate(self):
-        if self.gameState == "W":
-            self.gameState = "B"
+        if self.gameState == "W-":
+            self.gameState = "B-"
         else:
-            self.gameState = "W"
+            self.gameState = "W-"
 
     def getGamestate(self):
         return self.gameState;
